@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Маршрутки — Ингушетия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header reveal">
+      <div>
+        <h1>Маршрутки</h1>
+        <p>Ингушетия</p>
+      </div>
+      <div class="badge">Поиск маршрута по точкам</div>
+    </header>
+
+    <section class="controls reveal delay-1">
+      <div class="control-group">
+        <label for="citySelect">Город</label>
+        <select id="citySelect"></select>
+      </div>
+      <div class="control-group">
+        <label for="routeSelect">Маршрут</label>
+        <select id="routeSelect"></select>
+      </div>
+    </section>
+
+    <section class="trip-search panel reveal delay-2">
+      <div class="trip-grid">
+        <div class="control-group">
+          <label for="fromInput">Откуда</label>
+          <input id="fromInput" type="text" list="stopsData" placeholder="Например: Рынок Мархъаба" />
+        </div>
+
+        <div class="control-group">
+          <label for="toInput">Куда</label>
+          <input id="toInput" type="text" list="stopsData" placeholder="Например: Больница" />
+        </div>
+
+        <div class="control-group trip-actions">
+          <label>&nbsp;</label>
+          <button id="findRouteBtn" type="button">Найти маршрут</button>
+        </div>
+      </div>
+
+      <div class="trip-result" id="tripResult">Введите «откуда» и «куда», затем нажмите поиск.</div>
+      <datalist id="stopsData"></datalist>
+    </section>
+
+    <main class="content">
+      <aside class="panel route-panel reveal delay-3" id="routePanel">
+        <div class="route-head">
+          <div>
+            <h2 id="routeTitle">Выберите маршрут</h2>
+            <p id="routeTime">Время поездки появится здесь</p>
+          </div>
+          <div class="route-number" id="routeNumber">—</div>
+        </div>
+
+        <label class="search-wrap" for="stopSearch">
+          <span>Поиск остановки</span>
+          <input id="stopSearch" type="text" placeholder="Введите название остановки" />
+        </label>
+
+        <ul class="stops" id="stopsList"></ul>
+      </aside>
+
+      <section class="map-wrap reveal delay-4">
+        <div class="panel map-panel">
+          <div id="map"></div>
+          <div class="bus-card" id="busCard">
+            <img id="busImage" alt="Маршрутка" />
+            <div>
+              <strong id="busLabel">Маршрутка</strong>
+              <span id="busSub">Выберите маршрут на панели слева</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
